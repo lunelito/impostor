@@ -35,6 +35,7 @@ export default function UserCard({
   }, [y]);
 
   const isImpostor = impostor.id == user.id;
+
   const hint = useMemo(() => {
     return word.hints[Math.floor(Math.random() * word.hints.length)];
   }, [word]);
@@ -46,9 +47,11 @@ export default function UserCard({
         className="relative w-full h-full overflow-hidden"
       >
         <div ref={hintRef}>
-          <div className="absolute bottom-30 w-full h-100 bg-surface-2" />
-          <div className="absolute bottom-0 w-full h-30 bg-surface-2 flex justify-center items-center">
-            <p>Jesteś {isImpostor ? "Impostorem" : "bambikiem"}</p>
+          <div className="absolute bottom-30 w-full h-100 bg-primary" />
+          <div className="absolute bottom-0 w-full h-30 bg-primary flex justify-center items-center text-surface text-xl flex-col">
+            <p className="text-3xl">
+              Jesteś {isImpostor ? "Impostorem" : "bambikiem"}
+            </p>
             {isImpostor ? (
               <p>Twoja podpowiedz to {hint}</p>
             ) : (
@@ -59,7 +62,7 @@ export default function UserCard({
 
         <motion.div
           style={{ y }}
-          className={`absolute inset-0 bg-bg flex justify-center items-center cursor-grab flex-col ${isDragged ? "rounded-b-4xl" : ""}`}
+          className={`absolute inset-0 bg-bg cursor-grab flex-col ${isDragged ? "rounded-b-4xl" : ""}`}
           drag="y"
           onDragEnd={() => {
             SetDragged(true);
@@ -68,11 +71,27 @@ export default function UserCard({
           dragConstraints={{ top: -bottomBarHeight, bottom: 0 }}
           dragElastic={{ top: 0.2, bottom: 0 }}
         >
-          {dragged && <button onClick={nextPerson}>Nastepna osoba</button>}
-          <p>{user.name}</p>
-          <p>Przeciągnij w górę aby odsłonić hasło</p>
-          <div className="relative invert w-15 h-15">
-            <Image alt="arrow-up" src="/icons/arrow-up.svg" fill />
+          <div className="h-5/6 flex justify-center items-center flex-col gap-8">
+            <p className="text-7xl font-bold">{user.name}</p>
+            {dragged && (
+              <button
+                onClick={() => {
+                  nextPerson();
+                  SetDragged(false);
+                }}
+                className="bg-surface-2 px-4 py-2 rounded-2xl text-lg cursor-pointer"
+              >
+                Nastepna osoba
+              </button>
+            )}
+          </div>
+          <div className="h-1/6 flex justify-center items-center flex-col gap-4">
+            <div
+              className={`relative invert w-15 h-15 ${isDragged ? "rotate-180" : ""}`}
+            >
+              <Image alt="arrow-up" src="/icons/arrow-up.svg" fill />
+            </div>
+            <p>Przeciągnij w górę aby odsłonić hasło</p>
           </div>
         </motion.div>
       </div>

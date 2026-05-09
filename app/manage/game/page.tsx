@@ -1,10 +1,10 @@
 "use client";
 
 import UserCard from "@/src/components/gamePage/UserCard";
+import { useTransitionRouter } from "@/src/lib/animations/PageTransition";
 import { useUserContext } from "@/src/lib/context/userContext";
 import { words } from "@/src/lib/data/words";
 import { UserListType, wordType } from "@/src/lib/types/homePageTypes";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function page() {
@@ -15,7 +15,7 @@ export default function page() {
   const [word, setWord] = useState<wordType | null>(null);
   const [impostor, setImpostor] = useState<UserListType | null>(null);
   const [count, setCount] = useState<number>(0);
-  const router = useRouter();
+  const navigate = useTransitionRouter();
 
   useEffect(() => {
     setMounted(true);
@@ -39,12 +39,12 @@ export default function page() {
     let next = count + 1;
 
     if (next == userList.length) {
-      router.replace("/manage/finish");
+      navigate("/manage/finish");
       localStorage.setItem("impostor", impostor.name);
+    } else {
+      setCount(next);
+      setUser(userList[next]);
     }
-
-    setCount(next);
-    setUser(userList[next]);
   };
 
   if (!mounted) return null;

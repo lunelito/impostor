@@ -20,7 +20,7 @@ export default function PageTransition({
   const navigate = (href: string) => {
     setIsExiting(true);
     setTimeout(() => {
-      router.push(href);
+      router.push(href ?? "/");
       setIsExiting(false);
     }, 300);
   };
