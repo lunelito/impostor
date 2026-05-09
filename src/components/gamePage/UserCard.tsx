@@ -1,14 +1,21 @@
 import { UserListType, wordType } from "@/src/lib/types/homePageTypes";
 import { animate, motion, useMotionValue } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 type UserCardProps = {
   user: UserListType;
   word: wordType;
+  impostor: UserListType;
+  nextPerson: () => void;
 };
 
-export default function UserCard({ user, word }: UserCardProps) {
+export default function UserCard({
+  user,
+  word,
+  impostor,
+  nextPerson,
+}: UserCardProps) {
   const [dragged, SetDragged] = useState<boolean>(false);
   const [isDragged, setIsDragged] = useState(false);
 
@@ -27,6 +34,11 @@ export default function UserCard({ user, word }: UserCardProps) {
     return unsubscribe;
   }, [y]);
 
+  const isImpostor = impostor.id == user.id;
+  const hint = useMemo(() => {
+    return word.hints[Math.floor(Math.random() * word.hints.length)];
+  }, [word]);
+
   return (
     <div className="w-full h-full flex flex-col relative overflow-hidden ">
       <div
@@ -36,7 +48,12 @@ export default function UserCard({ user, word }: UserCardProps) {
         <div ref={hintRef}>
           <div className="absolute bottom-30 w-full h-100 bg-surface-2" />
           <div className="absolute bottom-0 w-full h-30 bg-surface-2 flex justify-center items-center">
-            <p>Pod spodem</p>
+            <p>Jesteś {isImpostor ? "Impostorem" : "bambikiem"}</p>
+            {isImpostor ? (
+              <p>Twoja podpowiedz to {hint}</p>
+            ) : (
+              <p>Twoje hasło to {word.word}</p>
+            )}
           </div>
         </div>
 
@@ -51,11 +68,12 @@ export default function UserCard({ user, word }: UserCardProps) {
           dragConstraints={{ top: -bottomBarHeight, bottom: 0 }}
           dragElastic={{ top: 0.2, bottom: 0 }}
         >
+          {dragged && <button onClick={nextPerson}>Nastepna osoba</button>}
+          <p>{user.name}</p>
+          <p>Przeciągnij w górę aby odsłonić hasło</p>
           <div className="relative invert w-15 h-15">
             <Image alt="arrow-up" src="/icons/arrow-up.svg" fill />
           </div>
-          {dragged && <p>next osoba</p>}
-          <p>Przeciągnij w górę aby odsłonić hasło</p>
         </motion.div>
       </div>
     </div>
