@@ -7,11 +7,7 @@ import React, {
   useState,
 } from "react";
 import type { ReactNode, SetStateAction } from "react";
-
-type UserListType = {
-  id: string;
-  name: string;
-};
+import { UserListType } from "../types/homePageTypes";
 
 type UserContextType = {
   userList: UserListType[];
@@ -35,21 +31,15 @@ export const useUserContext = (): UserContextType => {
 };
 
 export const UserProvider = ({ children }: UserProviderProps) => {
-  const [userList, setUserList] = useState<UserListType[]>([]);
-  const ref = useRef(null);
-
-  useEffect(() => {
-    if (ref.current === undefined || userList.length > 0) return;
-
+  const [userList, setUserList] = useState<UserListType[]>(() => {
+    if (typeof window === "undefined") return [];
     const stored = localStorage.getItem("users");
-
-    if (stored) {
-      setUserList(JSON.parse(stored));
-    }
-
-  }, []);
+    return stored ? JSON.parse(stored) : [];
+  });
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     localStorage.setItem("users", JSON.stringify(userList));
   }, [userList]);
 

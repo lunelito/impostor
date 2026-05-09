@@ -5,4 +5,15 @@ type NavElementType = {
   title: string;
 };
 
-export type { NavElementType };
+type wordType = {
+  id: number;
+  word: string;
+  hints: string[];
+};
+
+type UserListType = {
+  id: string;
+  name: string;
+};
+
+export type { NavElementType, wordType,UserListType };

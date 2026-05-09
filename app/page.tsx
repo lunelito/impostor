@@ -4,7 +4,7 @@ import { NavElementType } from "@/src/lib/types/homePageTypes";
 export default function Home() {
   const navs: NavElementType[] = [
     { id: 0, icon: "/icons/game.svg", goTo: "/lobby", title: "Lobby" },
-    { id: 1, icon: "/icons/group.svg", goTo: "/room", title: "Room" },
+    { id: 1, icon: "/icons/group.svg", goTo: "/game", title: "game" },
     {
       id: 2,
       icon: "/icons/settings.svg",

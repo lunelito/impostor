@@ -3,9 +3,9 @@ import React from "react";
 
 export default function layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="p-4">
+    <div className="h-screen flex flex-col bg-bg text-white">
       <Header />
-      <div>{children}</div>
+      {children}
     </div>
   );
 }

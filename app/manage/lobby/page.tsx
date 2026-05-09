@@ -16,13 +16,14 @@ export default function page() {
         name: user,
       },
     ]);
+    setUser("")
   };
 
   const remove = (idToDelete: string) => {
     setUserList((prev) => prev.filter((el) => el.id !== idToDelete));
   };
   return (
-    <div>
+    <div className="p-4">
       <div className="w-full h-[4vh] flex justify-between items-center gap-5">
         <input
           type="text"
