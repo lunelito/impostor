@@ -55,7 +55,7 @@ export default function page() {
     return <div>coś poszło nie tak</div>;
 
   return (
-    <div className="h-full">
+    <div className="h-full w-full">
       <UserCard
         user={user}
         word={word}

@@ -1,11 +1,12 @@
 "use client";
 import { useUserContext } from "@/src/lib/context/userContext";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function page() {
   const [user, setUser] = useState<string>("");
   const { userList, setUserList } = useUserContext();
+  const [mounted, setMounted] = useState(false);
   const add = () => {
     if (user.length == 0) return;
 
@@ -16,36 +17,43 @@ export default function page() {
         name: user,
       },
     ]);
-    setUser("")
+    setUser("");
   };
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const remove = (idToDelete: string) => {
     setUserList((prev) => prev.filter((el) => el.id !== idToDelete));
   };
+
+  if (!mounted) return null;
+
   return (
-    <div className="p-4">
-      <div className="w-full h-[4vh] flex justify-between items-center gap-5">
+    <div className="p-4 text-white">
+      <div className="w-full h-[4vh] flex justify-between items-center gap-4">
         <input
           type="text"
-          className="bg-white py-4 text-xl px-8 h-full w-[80%] rounded-2xl text-black focus:outline-0"
+          className="bg-surface-2 py-4 text-xl px-8 h-full w-full rounded-2xl focus:outline-0"
           onChange={(e) => setUser(e.target.value)}
           value={user}
         />
         <button
-          className="w-[10%] h-full bg-white text-black rounded-2xl flex justify-center items-center relative"
+          className="w-[10%] h-full bg-surface-2 rounded-2xl flex justify-center items-center relative cursor-pointer"
           onClick={add}
         >
-          <Image src={"/icons/add.svg"} fill alt="add" />
+          <Image className="invert" src={"/icons/add.svg"} fill alt="add" />
         </button>
       </div>
       <div className="flex flex-col mt-4 gap-4">
         {userList.map((el) => (
           <div
             key={el.id}
-            className="w-full h-[4vh] flex items-center justify-between bg-white px-8 text-xl text-black rounded-2xl"
+            className="w-full h-[4vh] flex items-center justify-between bg-surface-2  px-8 text-xl rounded-2xl"
           >
             <p>{el.name}</p>
-            <div className="flex justify-center items-center relative w-10 h-full">
+            <div className="flex justify-center items-center invert relative w-10 h-full cursor-pointer">
               <Image
                 src={"/icons/remove.svg"}
                 fill

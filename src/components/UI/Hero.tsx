@@ -66,15 +66,14 @@ export default function Hero() {
       };
       newBalls.push(Ball);
     }
-
     setBalls(newBalls);
   }, []);
 
   if (balls.length === 0) {
-    return <div className="fixed inset-0 -z-10 opacity-50" />; // Loading state
+    return <div className="fixed inset-0 -z-10 opacity-50" />;
   }
   return (
-    <div className="fixed inset-0 opacity-50">
+    <div className="fixed  opacity-50 z-10">
       <MultiBalls balls={balls} />
     </div>
   );

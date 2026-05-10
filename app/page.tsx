@@ -1,4 +1,5 @@
 import NavElement from "@/src/components/homePage/navElement/NavElement";
+import Hero from "@/src/components/UI/Hero";
 import { NavElementType } from "@/src/lib/types/homePageTypes";
 
 export default function Home() {
@@ -16,7 +17,8 @@ export default function Home() {
 
   return (
     <div className="h-screen flex justify-center items-center">
-      <div className="grid grid-cols-2 gap-10">
+      <Hero/>
+      <div className="grid grid-cols-2 gap-10 z-10">
         {navs.map((nav) => (
           <NavElement key={nav.id} nav={nav} />
         ))}
