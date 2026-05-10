@@ -3,7 +3,7 @@
 import UserCard from "@/src/components/gamePage/UserCard";
 import { useTransitionRouter } from "@/src/lib/animations/PageTransition";
 import { useUserContext } from "@/src/lib/context/userContext";
-import { words } from "@/src/lib/data/words";
+import { wordsAll } from "@/src/lib/data/words";
 import { UserListType, wordType } from "@/src/lib/types/homePageTypes";
 import { useEffect, useState } from "react";
 
@@ -25,7 +25,7 @@ export default function page() {
     if (userList.length < 2) return;
 
     const impostor = userList[Math.floor(Math.random() * userList.length)];
-    const randomWord = words[Math.floor(Math.random() * words.length)];
+    const randomWord = wordsAll[Math.floor(Math.random() * wordsAll.length)];
 
     setWord(randomWord);
     setImpostor(impostor);

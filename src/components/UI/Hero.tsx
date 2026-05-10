@@ -73,7 +73,7 @@ export default function Hero() {
     return <div className="fixed inset-0 -z-10 opacity-50" />;
   }
   return (
-    <div className="fixed  opacity-50 z-10">
+    <div className="fixed opacity-50 z-0">
       <MultiBalls balls={balls} />
     </div>
   );
