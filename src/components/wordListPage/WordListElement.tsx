@@ -14,7 +14,7 @@ export default function WordListElement({
 }: WordListElement) {
   return (
     <div
-      className={`m-4 text-xl text-center rounded-2xl px-4 py-8 bg-surface-2/30 backdrop-blur-lg duration-300 transition-all ease-in-out ${wordTheme === title ? "border-4 border-border font-bold" : "border-4 border-transparent"}`}
+      className={`m-4 text-xl text-center rounded-2xl px-4 py-8 bg-surface-2/50 backdrop-blur-lg duration-300 transition-all ease-in-out ${wordTheme === title ? "border-2 border-border font-bold" : "border-2 border-transparent"}`}
       onClick={() => {
         setSelectedTheme(title);
       }}

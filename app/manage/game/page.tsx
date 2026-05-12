@@ -3,13 +3,14 @@
 import UserCard from "@/src/components/gamePage/UserCard";
 import { useTransitionRouter } from "@/src/lib/animations/PageTransition";
 import { useUserContext } from "@/src/lib/context/userContext";
-import { wordsAll } from "@/src/lib/data/words";
+import { useWordThemeContext } from "@/src/lib/context/wordThemeContext";
+import { wordsMap } from "@/src/lib/data/words";
 import { UserListType, wordType } from "@/src/lib/types/homePageTypes";
 import { useEffect, useState } from "react";
 
 export default function page() {
   const { userList } = useUserContext();
-
+  const { wordTheme } = useWordThemeContext();
   const [mounted, setMounted] = useState(false);
   const [user, setUser] = useState<UserListType | null>(null);
   const [word, setWord] = useState<wordType | null>(null);
@@ -24,14 +25,20 @@ export default function page() {
   useEffect(() => {
     if (userList.length < 2) return;
 
+    const wordsSet = wordsMap.get(wordTheme.toLowerCase()) ?? []
+
+    console.log(wordsSet)
+
     const impostor = userList[Math.floor(Math.random() * userList.length)];
-    const randomWord = wordsAll[Math.floor(Math.random() * wordsAll.length)];
+    const randomWord = wordsSet[Math.floor(Math.random() * wordsSet.length)];
 
     setWord(randomWord);
     setImpostor(impostor);
     setUser(userList[0]);
     setCount(0);
-  }, [userList]);
+    
+  }, [userList, wordTheme]);
+
 
   const nextPerson = () => {
     if (impostor?.name == null) return;

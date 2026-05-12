@@ -23,4 +23,18 @@ const wordsAll: wordType[] = [
   ...wordsUniverse,
 ];
 
-export { wordsAll };
+const wordsMap = new Map([
+  ["all", wordsAll],
+  ["animals", wordsAnimals],
+  ["cooking", wordsCooking],
+  ["films", wordsFilms],
+  ["medicine", wordsMedicine],
+  ["music", wordsMusic],
+  ["nature", wordsNature],
+  ["sport", wordsSport],
+  ["technology", wordsTechnology],
+  ["travels", wordsTravels],
+  ["universe", wordsUniverse],
+]);
+
+export { wordsAll, wordsMap };

@@ -16,7 +16,7 @@ export default function page() {
   return (
     <div className="flex justify-center items-center h-full">
       <Hero />
-      <div className="bg-surface-2/30 backdrop-blur-lg w-100 h-50 flex justify-center items-center flex-col gap-4 rounded-2xl z-10">
+      <div className="bg-surface-2/50 backdrop-blur-lg w-100 h-50 flex justify-center items-center flex-col gap-4 rounded-2xl z-10">
         {finish ? (
           <>
             <p className="text-3xl">Impostorem był/a {impostor}</p>
