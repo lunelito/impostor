@@ -33,7 +33,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-bg text-white overflow-hidden`">
         <Providers>{children}</Providers>
       </body>
-      <GoogleAnalytics gaId="14879851249"/>
+      <GoogleAnalytics gaId="G-CY6RKYM2S7"/>
     </html>
   );
 }
