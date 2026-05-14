@@ -47,10 +47,10 @@ export default function UserCard({
         className="relative w-full h-full overflow-hidden"
       >
         <div ref={hintRef}>
-          <div className="absolute bottom-30 w-full h-100 bg-primary" />
-          <div className="absolute bottom-0 w-full h-30 bg-primary flex justify-center items-center text-surface text-xl flex-col">
+          <div className="absolute bottom-30 w-full h-100 bg-accent" />
+          <div className="absolute bottom-0 w-full h-30 bg-accent flex justify-center items-center text-surface text-xl flex-col">
             <p className="text-3xl">
-              Jesteś {isImpostor ? "Impostorem" : "bambikiem"}
+              Jesteś {isImpostor ? "Myśliwym" : "Łosiem"}
             </p>
             {isImpostor ? (
               <p>Twoja podpowiedz to {hint}</p>

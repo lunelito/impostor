@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import PageTransition from "@/src/lib/animations/PageTransition";
 import Providers from "@/src/lib/context/Providers";
 
 const geistSans = Geist({
@@ -31,9 +30,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-bg text-white overflow-hidden`">
-        <PageTransition>
           <Providers>{children}</Providers>
-        </PageTransition>
       </body>
     </html>
   );

@@ -1,11 +1,11 @@
 "use client";
 import Hero from "@/src/components/UI/Hero";
-import { useTransitionRouter } from "@/src/lib/animations/PageTransition";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function page() {
   const [impostor, setImpostor] = useState<string | null>(null);
-  const navigate = useTransitionRouter();
+  const navigate = useRouter();
   const [finish, setFinish] = useState<boolean>(false);
 
   useEffect(() => {
@@ -19,9 +19,9 @@ export default function page() {
       <div className="bg-surface-2/50 backdrop-blur-lg w-100 h-50 flex justify-center items-center flex-col gap-4 rounded-2xl z-10">
         {finish ? (
           <>
-            <p className="text-3xl">Impostorem był/a {impostor}</p>
+            <p className="text-3xl">Łosiem był/a {impostor}</p>
             <button
-              onClick={() => navigate("/manage/game")}
+              onClick={() => navigate.replace("/manage/game")}
               className="bg-surface-2 px-4 py-2 rounded-2xl text-lg cursor-pointer"
             >
               Nowa gra
