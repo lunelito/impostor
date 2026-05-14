@@ -6,19 +6,13 @@ export default function Home() {
   const navs: NavElementType[] = [
     { id: 0, icon: "/icons/game.svg", goTo: "/lobby", title: "Lobby" },
     { id: 1, icon: "/icons/group.svg", goTo: "/game", title: "game" },
-    {
-      id: 2,
-      icon: "/icons/settings.svg",
-      goTo: "/settings",
-      title: "Settigns",
-    },
-    { id: 3, icon: "/icons/words.svg", goTo: "/wordsList", title: "Words" },
+    { id: 2, icon: "/icons/words.svg", goTo: "/wordsList", title: "Words" },
   ];
 
   return (
     <div className="h-screen flex justify-center items-center">
       <Hero />
-      <div className="grid grid-cols-2 gap-10 z-10">
+      <div className="flex flex-col gap-10 z-10">
         {navs.map((nav) => (
           <NavElement key={nav.id} nav={nav} />
         ))}

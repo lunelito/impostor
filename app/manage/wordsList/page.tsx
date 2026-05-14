@@ -24,15 +24,17 @@ export default function page() {
   return (
     <div className="h-[95vh] w-full flex flex-col">
       <Hero />
-      <div className="flex-1 overflow-y-auto flex flex-col gap-4 p-4 scrollbar-thin">
-        {themes.map((el) => (
-          <WordListElement
-            key={el}
-            title={el}
-            wordTheme={wordTheme}
-            setSelectedTheme={setWordTheme}
-          />
-        ))}
+      <div className="flex-1 overflow-y-auto flex flex-col gap-4 p-4 scrollbar-thin items-center">
+        <div className="xl:w-[40vw] w-full">
+          {themes.map((el) => (
+            <WordListElement
+              key={el}
+              title={el}
+              wordTheme={wordTheme}
+              setSelectedTheme={setWordTheme}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
