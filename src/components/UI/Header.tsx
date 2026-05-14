@@ -9,7 +9,7 @@ export default function Header() {
   const titleCapitalized = title.charAt(0).toUpperCase() + title.slice(1);
   console.log(titleCapitalized);
   return (
-    <div className="w-full p-4 z-10 flex items-center gap-4 bg-transparent">
+    <div className="w-full p-4 flex items-center gap-4 bg-transparent">
       <div className="invert w-12 h-12">
         <Image
           alt={"arrow-back"}

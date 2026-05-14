@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Providers from "@/src/lib/context/Providers";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import Hero from "@/src/components/UI/Hero";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,9 +32,12 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-bg text-white overflow-hidden`">
-        <Providers>{children}</Providers>
+        <Providers>
+          <Hero />
+          {children}
+        </Providers>
       </body>
-      <GoogleAnalytics gaId="G-CY6RKYM2S7"/>
+      <GoogleAnalytics gaId="G-CY6RKYM2S7" />
     </html>
   );
 }

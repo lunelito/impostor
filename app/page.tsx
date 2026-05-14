@@ -11,7 +11,6 @@ export default function Home() {
 
   return (
     <div className="h-screen flex justify-center items-center">
-      <Hero />
       <div className="flex flex-col gap-10 z-10">
         {navs.map((nav) => (
           <NavElement key={nav.id} nav={nav} />

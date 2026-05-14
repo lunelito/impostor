@@ -33,13 +33,12 @@ export default function page() {
 
   return (
     <div className="w-full h-full">
-      <Hero />
       <div className="w-full flex justify-center">
-        <div className="p-4 text-white w-full z-20 xl:w-[40vw]">
+        <div className="p-4 text-white w-full xl:w-[40vw]">
           <div className="w-full h-[4vh] flex justify-between items-center gap-4">
             <input
               type="text"
-              className="bg-surface-2/50 backdrop-blur-lg border-2 border-border py-4 text-xl px-8 h-full w-full rounded-2xl focus:outline-0 z-10"
+              className="bg-surface-2/50 backdrop-blur-lg border-2 border-border py-4 text-xl px-8 h-full w-full rounded-2xl focus:outline-0"
               onChange={(e) => setUser(e.target.value)}
               value={user}
             />
