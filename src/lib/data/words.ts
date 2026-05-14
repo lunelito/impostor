@@ -1,7 +1,7 @@
 import { wordType } from "../types/homePageTypes";
 import { wordsAnimals } from "./animals";
 import { wordsCooking } from "./cooking";
-import { wordsFilms } from "./films";
+import { wordsCharacters } from "./films";
 import { wordsMedicine } from "./medicine";
 import { wordsMusic } from "./music";
 import { wordsNature } from "./nature";
@@ -13,7 +13,7 @@ import { wordsUniverse } from "./universe";
 const wordsAll: wordType[] = [
   ...wordsAnimals,
   ...wordsCooking,
-  ...wordsFilms,
+  ...wordsCharacters,
   ...wordsMedicine,
   ...wordsMusic,
   ...wordsNature,
@@ -27,7 +27,7 @@ const wordsMap = new Map([
   ["all", wordsAll],
   ["animals", wordsAnimals],
   ["cooking", wordsCooking],
-  ["films", wordsFilms],
+  ["films", wordsCharacters],
   ["medicine", wordsMedicine],
   ["music", wordsMusic],
   ["nature", wordsNature],
